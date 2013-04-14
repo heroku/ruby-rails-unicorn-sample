@@ -9,6 +9,20 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
+# Don't load plugin railtie at all.
+module Rails
+  class Application < Engine
+    class Railties < Rails::Engine::Railties
+      def all(&block)
+        #@all ||= railties + engines + plugins
+        @all ||= railties + engines
+        @all.each(&block) if block
+        @all
+      end
+    end
+  end
+end
+
 module RubyRailsSample
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
