@@ -9,7 +9,7 @@ gem 'pg'
 
 gem 'unicorn'
 gem "newrelic_rpm", "~> 3.5.7.57.beta"
-gem "rack-queue-metrics"
+# gem "rack-queue-metrics"
 
 # Gems used only for assets and not required
 # in production environments by default.
